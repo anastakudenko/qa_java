@@ -12,12 +12,12 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 @RunWith(Parameterized.class)
-public class TestLion {
+public class TestLionParameterized {
     private final String sex;
     private final boolean expectedHasMane;
     @Mock
     Feline felineMock;
-    public TestLion(String sex, boolean expectedHasMane) {
+    public TestLionParameterized(String sex, boolean expectedHasMane) {
         this.sex = sex;
         this.expectedHasMane = expectedHasMane;
     }
@@ -49,10 +49,5 @@ public class TestLion {
         Lion lion = new Lion(sex, felineMock);
         int actualKittens = lion.getKittens();
         assertEquals(1, actualKittens);
-    }
-
-    @Test(expected = Exception.class)
-    public void testInvalidSexValue() throws Exception {
-        Lion lion = new Lion("Неверное значение", felineMock);
     }
 }
