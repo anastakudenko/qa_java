@@ -11,13 +11,13 @@ import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TestCat {
-
+    public final List<String> meat = List.of("мясо");
     @Mock
     Feline felineMock;
 
     @Before
     public void setup() throws Exception {
-        when(felineMock.eatMeat()).thenReturn(List.of("мясо"));
+        when(felineMock.eatMeat()).thenReturn(meat);
     }
 
     @Test
@@ -30,6 +30,6 @@ public class TestCat {
     public void testGetFood() throws Exception {
         Cat cat = new Cat(felineMock);
         List<String> actualFood = cat.getFood();
-        assertEquals(List.of("мясо"), actualFood);
+        assertEquals(meat, actualFood);
     }
 }
